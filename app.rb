@@ -20,11 +20,11 @@ get '/guess' do
   sanitized_params = ParamsSanitizer.call(params)
   errors = Validator.call(data, **sanitized_params)
 
-  return [VALIDATION_ERROR_STATUS, errors] unless errors.empty?
+  return { code: VALIDATION_ERROR_STATUS, errors: errors }.to_json unless errors.empty?
 
   begin
-    [OK_STATUS, Guesser.call(data, **sanitized_params)]
+    { code: OK_STATUS, data: Guesser.call(data, **sanitized_params) }.to_json
   rescue
-    [SERVER_ERROR_STATUS, 'Something went wrong']
+    { code: SERVER_ERROR_STATUS, errors: { common: 'Something went wrong' } }.to_json
   end
 end

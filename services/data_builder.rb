@@ -10,7 +10,7 @@ class DataBuilder
         :first_name_last_name :
         :first_name_initial_last_name
 
-      result[domain] = prefix_format unless result[domain]
+      result[domain] ||= prefix_format
       result
     end
   end

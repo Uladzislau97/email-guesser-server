@@ -2,17 +2,11 @@
 
 class Validator
   def self.call(data, name:, surname:, domain:)
-    errors = []
-
-    errors.push('Please enter your name') if blank?(name)
-    errors.push('Please enter your surname') if blank?(surname)
-
-    if blank?(domain)
-      errors.push('Please enter domain')
-    else
-      errors.push('Domain not found') unless data[domain]
-    end
-
+    errors = {}
+    errors[:name] = 'Please enter your name' if blank?(name)
+    errors[:surname] = 'Please enter your surname' if blank?(surname)
+    errors[:domain] = 'Please enter domain' if blank?(domain)
+    errors[:domain] ||= 'Domain not found' unless data[domain]
     errors
   end
 
