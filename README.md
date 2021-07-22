@@ -1,9 +1,9 @@
-# Email Guesser
+# Email Guesser Server
 
 To start server app locally run following commands:
 
-- `make build` to install necessary dependencies
-- `make run` to start application
+- `make install` to install necessary dependencies
+- `make start` to start application
 - `make test` to run tests
 
 After start application will be available on `localhost:4567`
