@@ -25,6 +25,6 @@ get '/guess' do
   begin
     { code: OK_STATUS, data: Guesser.call(data, **sanitized_params) }.to_json
   rescue
-    { code: SERVER_ERROR_STATUS, errors: { common: 'Something went wrong' } }.to_json
+    { code: SERVER_ERROR_STATUS }.to_json
   end
 end
