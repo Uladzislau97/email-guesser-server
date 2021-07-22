@@ -3,9 +3,15 @@
 class ParamsSanitizer
   def self.call(params)
     {
-      name: params[:name]&.downcase,
-      surname: params[:surname]&.downcase,
-      domain: params[:domain]&.downcase
+      name: sanitize(params[:name]),
+      surname: sanitize(params[:surname]),
+      domain: sanitize(params[:domain])
     }
+  end
+
+  private
+
+  def self.sanitize(value)
+    value&.strip&.downcase
   end
 end

@@ -5,7 +5,7 @@ require_relative '../services/params_sanitizer.rb'
 RSpec.describe ParamsSanitizer do
   let(:params) do
     {
-      name: 'Name',
+      name: 'Name ',
       surname: 'surNaMe',
       domain: nil
     }
